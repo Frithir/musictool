@@ -286,26 +286,36 @@ select {
 /* Dot markers for guitar/bass fretboards */
 .fret-dot {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 30px;
+  height: 30px;
   background-color: #ccc;
   border-radius: 50%;
-  bottom: 2px;
+  bottom: 86px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: auto;
+  opacity: 0.2;
 }
 
 .fret-double-dot {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 30px;
+  height: 30px;
   background-color: #ccc;
   border-radius: 50%;
-  bottom: 2px;
+  bottom: 86px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: auto;
+  opacity: 0.5;
+}
+.fret-dot.bass,
+.fret-double-dot.bass {
+  bottom: 58px;
 }
 
 .fret-double-dot:first-child {
-  left: calc(50% - 8px);
+  display: none;
 }
 
 .fret-double-dot:last-child {

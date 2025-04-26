@@ -143,8 +143,56 @@
           <div id="chord-buttons" class="chord-buttons"></div>
         </div>
       </div>
+
+      <!-- New Music Notation Section -->
+      <div class="music-notation-container">
+        <h2>Musical Notation</h2>
+        <div class="music-notation-tabs">
+          <button class="notation-tab-btn active" data-notation="ascending">
+            Ascending
+          </button>
+          <button class="notation-tab-btn" data-notation="descending">
+            Descending
+          </button>
+        </div>
+        <div class="staves-container">
+          <div class="staff treble-staff">
+            <div class="clef treble-clef">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDMwIDgwIj48cGF0aCBkPSJNMjAsNDJjMCwwLTcuNSwzLTcuNSwxMGMwLDctMiw4LTQsOGMtMiwwLTQtMS00LTRjMC0zLDItNSw0LTVjMywwLDQsMiw0LDJsMCwwYzAsMC00LDIxLTQsMjNjMCwyLDAsMywzLDNjMiwwLDMtMSwzLTNjMC0yLDAtNSwwLTVzMTAtNiwxNC0xM2MyLTQsMS42LTgsMC0xMGMtMS02LTEwLTUtMTItMTBDMTUsMzUsMTgsMjgsMjAsMjVjMS0yLDEtNCwxLThWOGMwLDAtMS0yLTItMkMxOCw2LDE3LDcsMTcsOGMwLDIsMS0wLjUsMS0wLjVzMiwxMS41LTMsMTdjLTMsNC01LDEwLTUsMTRjMCwzLDEsNSwxLDVzMy0zLDgtM0MyNCw0MCwyNSw0MiwyMCw0MnoiLz48L3N2Zz4="
+                alt="Treble Clef"
+              />
+            </div>
+            <div class="staff-lines">
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+            </div>
+            <div id="treble-notes" class="notes"></div>
+          </div>
+
+          <div class="staff bass-staff">
+            <div class="clef bass-clef">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDMwIDgwIj48cGF0aCBkPSJNNiw0NyBDNiw1MSA5LDU0IDEzLDU0IEMxNyw1NCAyMCw1MSAyMCw0NyBDMjAsNDMgMTcsNDEgMTMsNDEgQzksMzkgNiwzNyA2LDMzIEM2LDI5IDksMjYgMTMsMjYgQzE3LDI2IDIwLDI5IDIwLDMzIEwyMCwzMyBMMjIsMzMgTDIyLDI1IEwyMCwyNSBMMjAsMjkgQzE4LDI3IDE2LDI2IDEzLDI2IEM3LDI2IDQsMzAgNCwzMyBDNCwzNyA3LDM5IDEzLDQxIEMxNyw0MyAyMCw0NSAyMCw0OSBDMjAsNTMgMTcsNTYgMTMsNTYgQzkuNSw1NiA2LDUzIDYsNDkgTDYsNDkgTDQsNDkgTDQsNTcgTDYsNTcgTDYsNTMgQzgsNTUgMTAsNTYgMTMsNTYgQzE5LDU2IDIyLDUyIDIyLDQ5IEMyMiw0NSAxOSw0MyAxMyw0MSBDOSwzOSA2LDM3IDYsMzMgTDYsNDcgWiBNMjQsMjcgQzI0LDI4LjcgMjUuMywzMCAyNywzMCBDMjguNywzMCAzMCwyOC43IDMwLDI3IEMzMCwyNS4zIDI4LjcsMjQgMjcsMjQgQzI1LjMsMjQgMjQsMjUuMyAyNCwyNyBaIE0yNCw1MyBDMjQsNTQuNyAyNS4zLDU2IDI3LDU2IEMyOC43LDU2IDMwLDU0LjcgMzAsNTMgQzMwLDUxLjMgMjguNyw1MCAyNyw1MCBDMjUuMyw1MCAyNCw1MS4zIDI0LDUzIFoiLz48L3N2Zz4="
+                alt="Bass Clef"
+              />
+            </div>
+            <div class="staff-lines">
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+            </div>
+            <div id="bass-notes" class="notes"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script type="module" src="script-backup.js"></script>
+    <script type="module" src="script.js"></script>
   </body>
 </html>

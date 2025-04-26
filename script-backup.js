@@ -491,7 +491,6 @@ document.addEventListener("DOMContentLoaded", function () {
       steps: [0, 1, 3, 4, 6, 7, 9],
     },
   ];
-
   // Define notes for all chromatic scales
   const chromaticScales = {
     C: ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"],
@@ -666,7 +665,11 @@ document.addEventListener("DOMContentLoaded", function () {
             (tuning === bassTuning && stringNote === "D"))
         ) {
           const dot = document.createElement("div");
-          dot.classList.add("fret-dot");
+          dot.classList.add(
+            "fret-dot",
+            tuning === guitarTuning ? "guitar" : "bass"
+          );
+
           fret.appendChild(dot);
         }
 
@@ -677,9 +680,15 @@ document.addEventListener("DOMContentLoaded", function () {
             (tuning === bassTuning && stringNote === "D"))
         ) {
           const dot1 = document.createElement("div");
-          dot1.classList.add("fret-double-dot");
+          dot1.classList.add(
+            "fret-double-dot",
+            tuning === guitarTuning ? "guitar" : "bass"
+          );
           const dot2 = document.createElement("div");
-          dot2.classList.add("fret-double-dot");
+          dot2.classList.add(
+            "fret-double-dot",
+            tuning === guitarTuning ? "guitar" : "bass"
+          );
           fret.appendChild(dot1);
           fret.appendChild(dot2);
         }

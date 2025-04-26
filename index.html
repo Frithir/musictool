@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Scale Learning Tool</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Music Scale Learning Tool</h1>
+
+      <div class="controls">
+        <div class="input-group">
+          <label for="root-note">Root Note:</label>
+          <select id="root-note">
+            <option value="C">C</option>
+            <option value="C#">C# / Db</option>
+            <option value="D">D</option>
+            <option value="D#">D# / Eb</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="F#">F# / Gb</option>
+            <option value="G">G</option>
+            <option value="G#">G# / Ab</option>
+            <option value="A">A</option>
+            <option value="A#">A# / Bb</option>
+            <option value="B">B</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="scale-family">Scale Family:</label>
+          <select id="scale-family">
+            <option value="all">All Families</option>
+            <option value="1">Family 1: Major/Minor</option>
+            <option value="2">Family 2: Melodic Minor</option>
+            <option value="3">Family 3: Harmonic Minor</option>
+            <option value="4">Family 4: Harmonic Major</option>
+            <option value="5">Family 5: Diminished</option>
+            <option value="6">Family 6: Whole Tone</option>
+            <option value="7">Family 7: Augmented</option>
+            <option value="8">Family 8: Pentatonic</option>
+            <option value="9">Family 9: Blues</option>
+            <option value="10">Family 10: World/Modal</option>
+            <option value="11">Family 11: Jazz/Fusion</option>
+            <option value="12">Family 12: Funk & Soul</option>
+            <option value="13">Family 13: Electronic & Modern</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="scale-select">Scale:</label>
+          <select id="scale-select">
+            <!-- Will be populated by JavaScript -->
+          </select>
+        </div>
+      </div>
+
+      <div class="scale-info">
+        <div class="scale-name">
+          <h2 id="current-scale-name">Select a scale</h2>
+          <p id="scale-interval-pattern"></p>
+          <p id="scale-notes"></p>
+          <p id="scale-chords"></p>
+        </div>
+        <div class="explore-chords-container">
+          <h4>Explore Chords by Root</h4>
+          <div class="explore-controls">
+            <label for="explore-chord">Chord Type:</label>
+            <select id="explore-chord">
+              <option value="">--</option>
+              <!-- Options filled by JS -->
+            </select>
+            <button id="explore-show-btn">Show Chord</button>
+            <button id="explore-reset-btn">Reset</button>
+            <div id="explore-chord-info" class="explore-chord-info"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruments-container">
+        <div class="instrument-tabs">
+          <button class="tab-btn active" data-tab="piano">Piano</button>
+          <button class="tab-btn" data-tab="guitar">Guitar</button>
+          <button class="tab-btn" data-tab="bass">Bass</button>
+        </div>
+
+        <div class="instrument-displays">
+          <div id="piano-display" class="instrument active">
+            <h3>Piano</h3>
+            <div class="piano-container">
+              <div class="piano">
+                <!-- Two octaves of piano keys will be added by JavaScript -->
+              </div>
+            </div>
+          </div>
+
+          <div id="guitar-display" class="instrument">
+            <h3>Guitar</h3>
+            <div class="guitar-container">
+              <div class="guitar-fretboard">
+                <div class="string-labels">
+                  <div class="string-label">e</div>
+                  <div class="string-label">B</div>
+                  <div class="string-label">G</div>
+                  <div class="string-label">D</div>
+                  <div class="string-label">A</div>
+                  <div class="string-label">E</div>
+                </div>
+                <div class="fretboard">
+                  <!-- Guitar fretboard will be added by JavaScript -->
+                </div>
+                <div class="fret-markers">
+                  <!-- Fret numbers will be added by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="bass-display" class="instrument">
+            <h3>Bass</h3>
+            <div class="bass-container">
+              <div class="bass-fretboard">
+                <div class="string-labels">
+                  <div class="string-label">G</div>
+                  <div class="string-label">D</div>
+                  <div class="string-label">A</div>
+                  <div class="string-label">E</div>
+                </div>
+                <div class="fretboard">
+                  <!-- Bass fretboard will be added by JavaScript -->
+                </div>
+                <div class="fret-markers">
+                  <!-- Fret numbers will be added by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="chord-buttons-container">
+          <h4>Matching Chords</h4>
+          <div id="chord-buttons" class="chord-buttons"></div>
+        </div>
+      </div>
+
+      <!-- New Music Notation Section -->
+      <div class="music-notation-container">
+        <h2>Musical Notation</h2>
+        <div class="music-notation-tabs">
+          <button class="notation-tab-btn active" data-notation="ascending">
+            Ascending
+          </button>
+          <button class="notation-tab-btn" data-notation="descending">
+            Descending
+          </button>
+        </div>
+        <div class="staves-container">
+          <div class="staff treble-staff">
+            <div class="clef treble-clef">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDMwIDgwIj48cGF0aCBkPSJNMjAsNDJjMCwwLTcuNSwzLTcuNSwxMGMwLDctMiw4LTQsOGMtMiwwLTQtMS00LTRjMC0zLDItNSw0LTVjMywwLDQsMiw0LDJsMCwwYzAsMC00LDIxLTQsMjNjMCwyLDAsMywzLDNjMiwwLDMtMSwzLTNjMC0yLDAtNSwwLTVzMTAtNiwxNC0xM2MyLTQsMS42LTgsMC0xMGMtMS02LTEwLTUtMTItMTBDMTUsMzUsMTgsMjgsMjAsMjVjMS0yLDEtNCwxLThWOGMwLDAtMS0yLTItMkMxOCw2LDE3LDcsMTcsOGMwLDIsMS0wLjUsMS0wLjVzMiwxMS41LTMsMTdjLTMsNC01LDEwLTUsMTRjMCwzLDEsNSwxLDVzMy0zLDgtM0MyNCw0MCwyNSw0MiwyMCw0MnoiLz48L3N2Zz4="
+                alt="Treble Clef"
+              />
+            </div>
+            <div class="staff-lines">
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+            </div>
+            <div id="treble-notes" class="notes"></div>
+          </div>
+
+          <div class="staff bass-staff">
+            <div class="clef bass-clef">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDMwIDgwIj48cGF0aCBkPSJNNiw0NyBDNiw1MSA5LDU0IDEzLDU0IEMxNyw1NCAyMCw1MSAyMCw0NyBDMjAsNDMgMTcsNDEgMTMsNDEgQzksMzkgNiwzNyA2LDMzIEM2LDI5IDksMjYgMTMsMjYgQzE3LDI2IDIwLDI5IDIwLDMzIEwyMCwzMyBMMjIsMzMgTDIyLDI1IEwyMCwyNSBMMjAsMjkgQzE4LDI3IDE2LDI2IDEzLDI2IEM3LDI2IDQsMzAgNCwzMyBDNCwzNyA3LDM5IDEzLDQxIEMxNyw0MyAyMCw0NSAyMCw0OSBDMjAsNTMgMTcsNTYgMTMsNTYgQzkuNSw1NiA2LDUzIDYsNDkgTDYsNDkgTDQsNDkgTDQsNTcgTDYsNTcgTDYsNTMgQzgsNTUgMTAsNTYgMTMsNTYgQzE5LDU2IDIyLDUyIDIyLDQ5IEMyMiw0NSAxOSw0MyAxMyw0MSBDOSwzOSA2LDM3IDYsMzMgTDYsNDcgWiBNMjQsMjcgQzI0LDI4LjcgMjUuMywzMCAyNywzMCBDMjguNywzMCAzMCwyOC43IDMwLDI3IEMzMCwyNS4zIDI4LjcsMjQgMjcsMjQgQzI1LjMsMjQgMjQsMjUuMyAyNCwyNyBaIE0yNCw1MyBDMjQsNTQuNyAyNS4zLDU2IDI3LDU2IEMyOC43LDU2IDMwLDU0LjcgMzAsNTMgQzMwLDUxLjMgMjguNyw1MCAyNyw1MCBDMjUuMyw1MCAyNCw1MS4zIDI0LDUzIFoiLz48L3N2Zz4="
+                alt="Bass Clef"
+              />
+            </div>
+            <div class="staff-lines">
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+              <div class="staff-line"></div>
+            </div>
+            <div id="bass-notes" class="notes"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,565 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 150px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.scale-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.scale-name h2 {
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.scale-name p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+/* Instrument tabs */
+.instrument-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.tab-btn:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.tab-btn:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.tab-btn.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.instrument {
+  display: none;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.instrument.active {
+  display: block;
+}
+
+.instrument h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Piano styling */
+.piano-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+
+.piano {
+  display: flex;
+  position: relative;
+  height: 150px;
+}
+
+.key {
+  position: relative;
+  border: 1px solid #000;
+  border-radius: 0 0 5px 5px;
+  transition: background-color 0.2s;
+}
+
+.white-key {
+  width: 40px;
+  height: 150px;
+  background-color: white;
+  z-index: 1;
+}
+
+.black-key {
+  width: 24px;
+  height: 100px;
+  background-color: black;
+  margin-left: -12px;
+  margin-right: -12px;
+  z-index: 2;
+}
+
+.white-key.scale-note {
+  background-color: #3498db;
+}
+
+.black-key.scale-note {
+  background-color: #2980b9;
+}
+
+.key-label {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #333;
+}
+
+.black-key .key-label {
+  color: white;
+  bottom: 5px;
+}
+
+/* Guitar and Bass styling */
+.guitar-container,
+.bass-container {
+  margin-bottom: 30px;
+}
+
+.guitar-fretboard,
+.bass-fretboard {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  position: relative;
+}
+
+.string-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.string-label {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+}
+
+.fretboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.string {
+  display: flex;
+  height: 30px;
+  position: relative;
+}
+
+.string::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background-color: #aaa;
+  z-index: 1;
+}
+
+.fret {
+  width: 50px;
+  height: 30px;
+  border-right: 3px solid #888;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.fret:first-child {
+  border-left: 5px solid #888;
+  border-right: 3px solid #888;
+}
+
+.fret-note {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  position: relative;
+  z-index: 3;
+}
+
+.fret-note.scale-note {
+  background-color: #3498db;
+  color: white;
+}
+
+.fret-note.root-note {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.fret-markers {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  position: absolute;
+  top: -30px;
+  left: 28px;
+}
+
+.fret-marker {
+  width: 50px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Dot markers for guitar/bass fretboards */
+.fret-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fret-double-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  bottom: 2px;
+}
+
+.fret-double-dot:first-child {
+  left: calc(50% - 8px);
+}
+
+.fret-double-dot:last-child {
+  left: calc(50% + 8px);
+}
+
+/* Music Notation Section */
+.music-notation-container {
+  margin-top: 40px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.music-notation-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.music-notation-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.notation-tab-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.notation-tab-btn:first-child {
+  border-radius: 4px 0 0 4px;
+}
+
+.notation-tab-btn:last-child {
+  border-radius: 0 4px 4px 0;
+}
+
+.notation-tab-btn.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.staves-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.staff {
+  position: relative;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.clef {
+  position: absolute;
+  left: 0;
+  height: 100px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+
+.clef img {
+  width: 100%;
+  height: auto;
+}
+
+.staff-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 64px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.staff-line {
+  height: 1px;
+  width: 100%;
+  background-color: #000;
+}
+
+.notes {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-left: 60px; /* Space for clef */
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+.note {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #333;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.note.root-note {
+  background-color: #e74c3c;
+}
+
+.note-stem {
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  background-color: #333;
+}
+
+.ledger-line {
+  position: absolute;
+  height: 1px;
+  width: 30px;
+  background-color: #000;
+}
+
+.accidental {
+  position: absolute;
+  left: -15px;
+  font-size: 24px;
+  color: #333;
+  font-weight: normal;
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .input-group {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .white-key {
+    width: 30px;
+  }
+
+  .black-key {
+    width: 20px;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+
+  .fret {
+    width: 40px;
+  }
+
+  .fret-marker {
+    width: 40px;
+  }
+
+  .staves-container {
+    overflow-x: scroll;
+  }
+
+  .staff {
+    min-width: 500px;
+  }
+}
+.chord-buttons-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.chord-buttons button {
+  margin: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: none;
+  background-color: #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chord-buttons button:hover {
+  background-color: #bbb;
+}
+
+.chord-buttons button.active {
+  background-color: #3498db;
+  color: white;
+}
+
+.explore-chords-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.explore-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.explore-controls select,
+.explore-controls button {
+  padding: 6px 10px;
+  font-size: 14px;
+}
+.explore-chord-info {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+#explore-reset-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#explore-reset-btn:hover {
+  background-color: #ccc;
+}
+
+.note.outside-scale,
+.fret-note.outside-scale,
+.key.outside-scale {
+  opacity: 0.4;
+  background-color: #888 !important;
+}
